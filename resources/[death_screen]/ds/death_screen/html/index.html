@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Death Screen</title>
+    <style>
+        body { margin: 0; }
+        #sound { display: none; }
+    </style>
+</head>
+<body>
+    <audio id="sound" src="../../heartbeat.mp3"></audio>
+    <script>
+        window.addEventListener('message', function(event) {
+            var sound = document.getElementById('sound');
+            if (event.data.action === 'playSound') {
+                sound.currentTime = 0;
+                sound.play();
+            } else if (event.data.action === 'stopSound') {
+                sound.pause();
+            }
+        });
+    </script>
+</body>
+</html>
