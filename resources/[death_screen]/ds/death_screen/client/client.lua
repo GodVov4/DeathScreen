@@ -106,12 +106,11 @@ AddEventHandler('playerDown', function (playerPed, timer)
             AddTextComponentString(textAmbulance)
             EndTextCommandPrint(timer * 1000, true)
 
-            if IsControlPressed(0, 38) then
+            if IsControlPressed(0, 38) and not isCallHelp then
                 if not isHolding then
                     isHolding = true
                     holdStartTime = GetGameTimer()
                 elseif GetGameTimer() - holdStartTime >= holdDuration then
-                    TriggerEvent('chat:addMessage', {args = {'timer ' .. timer}})
                     timer = timer + Config.TimerLong - Config.Timer
                     isCallHelp = true
                     isHolding = false
